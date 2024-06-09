@@ -1,66 +1,69 @@
-Electricity Meter
-This project is designed to measure and display electrical parameters such as voltage, current, power, and accumulated energy using an AVR microcontroller. It also includes functionality to control a relay based on energy consumption.
+# Electricity Meter Unit
 
-Table of Contents
-Description
-Features
-Installation
-Usage
-Contributing
-License
-Contact
-Description
-Electricity Meter is a firmware for an AVR microcontroller that measures voltage, current, power, and energy consumption. It uses an LCD to display these parameters and includes a relay control feature based on the energy balance.
+This project is an electricity meter unit that measures voltage, current, power, and energy consumption. The system also includes balance management and power control features. The electricity meter unit is built using an AVR microcontroller.
 
-Features
-Voltage Measurement: Measures the peak voltage.
-Current Measurement: Measures the peak current.
-Power Calculation: Calculates power in kW.
-Energy Calculation: Accumulates energy consumption in kWh.
-Relay Control: Controls a relay based on energy balance.
-LCD Display: Displays voltage, current, power, energy, and balance on an LCD.
+## Features
 
-Installation
-Hardware Requirements
-AVR Microcontroller (e.g., ATmega series)
-LCD Display
-Relay
-Voltage and Current Sensors
-Additional components: resistors, capacitors, etc.
+- **Voltage Measurement:** Measures and displays the peak voltage.
+- **Current Measurement:** Measures and displays the peak current.
+- **Temperature Measurement:** Measures the temperature of the water.
+- **Power Calculation:** Calculates and displays the power consumption in kilowatts (kW).
+- **Energy Calculation:** Calculates and displays the accumulated energy consumption in kilowatt-hours (kWh).
+- **Balance Management:** Manages the user’s balance based on energy consumption.
+- **Power Control:** Controls the power relay based on the remaining balance.
 
-Software Requirements
-AVR-GCC (AVR C Compiler) or Microchip Studio
-AVRDUDE (for uploading the code to the microcontroller)
-Proteus 8.13 for simulation
+## Components
 
-Steps
-Clone the repository
-git clone https://github.com/mashai-letlatsa/Electricity-Meter.git
-Navigate to the project directory
-cd Electricity-Meter
-Build the project
-make
-Upload the firmware to your microcontroller
-make upload
+- AVR Microcontroller (ATmega32)
+- Voltage Sensor
+- Current Sensor
+- Load
+- Relay Switch
+- LCD Display
+- Miscellaneous components (resistors, capacitors, etc.)
+
+## Circuit Diagram
+
+![image](https://github.com/mashai-letlatsa/Electricity-Meter/assets/161247807/cd8f1976-925c-49a7-ac56-1255b530d95f)
 
 
-Usage
-Connect the hardware: Ensure all components (sensors, LCD, relay) are connected correctly to the microcontroller as per the code configuration.
-Power up the system: Supply power to the microcontroller and connected components.
-Monitor the LCD: The LCD will display the measured voltage, current, calculated power, accumulated energy, and the remaining balance.
-Relay control: The relay will be controlled automatically based on the energy balance.
-Contributing
-Contributions are welcome! Please follow these steps to contribute:
+## Code Explanation
 
-Fork the repository.
-Create a new branch (git checkout -b feature-branch).
-Make your changes.
-Commit your changes (git commit -m 'Add new feature').
-Push to the branch (git push origin feature-branch).
-Open a pull request.
+### Initialization Functions
 
-License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+- `lcdInit()`: Initializes the LCD display.
+- `ADC_Init()`: Initializes the ADC for voltage and current measurement.
+- `initTimer()`: Initializes the timer for time tracking.
+- `lcdCommand()`: Sends a command to the LCD.
+- `lcdData()`: Sends data to the LCD.
 
-Contact
-For any questions or support, please contact mashailetlatsa@gmail.com or kopanangletlatsa@gmail.com.
+### Main Loop
+
+The main loop continuously updates the electricity meter unit by performing the following tasks:
+
+- Measures the peak voltage and current.
+- Calculates and displays the power consumption.
+- Calculates and displays the accumulated energy consumption.
+- Manages the user’s balance based on energy consumption.
+- Controls the power based on the remaining balance.
+
+### Interrupt Service Routines (ISR)
+
+- `ISR(TIMER1_COMPA_vect)`: Handles Timer1 Compare Match A interrupts for time tracking.
+
+## How to Use
+
+1. **Setup the hardware** according to the circuit diagram.
+2. **Upload the code** to the AVR microcontroller.
+3. **Run the system** and monitor the LCD display for real-time updates on voltage, current, power, energy consumption, and balance status.
+4. **Adjust the settings** as necessary for your specific requirements.
+
+## License
+
+This project is licensed under the MIT License.
+
+
+## Contact
+
+For any questions or support, please contact Kopanang Letlatsa at mashailetlatsa@gmail.com or kopanangletlatsa@gmail.com.
+
