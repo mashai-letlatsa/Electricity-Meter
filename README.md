@@ -24,7 +24,7 @@ This project is an electricity meter unit that measures voltage, current, power,
 
 ## Circuit Diagram
 
-![image](https://github.com/mashai-letlatsa/Electricity-Meter/assets/161247807/cd8f1976-925c-49a7-ac56-1255b530d95f)
+![image](https://github.com/mashai-letlatsa/Electricity-Meter/assets/161247807/af46847f-1125-49df-9841-91bf3928aad0)
 
 
 ## Code Explanation
